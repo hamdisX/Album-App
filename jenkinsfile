@@ -10,6 +10,12 @@ pipeline {
         git 'https://github.com/hamdimiled/Album-App'
       }
     }
+
+     stage('SonarQube') {
+      steps {
+         sh 'sonar-scanner'
+      }
+    }  
         
     stage('Install dependencies') {
       steps {
