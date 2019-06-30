@@ -1,0 +1,51 @@
+version: "3.5"
+
+services:
+  sonarqube:
+    image: hamdis/sonar:v1
+    ports:
+    - "9000:9000"
+    networks:
+    - sonarnet
+    environment:
+    - SONARQUBE_JDBC_URL=jdbc:postgresql://db:5432/sonar
+    volumes:
+    - sonarqube_conf:/opt/sonarqube/conf
+    - sonarqube_data:/opt/sonarqube/data
+    - sonarqube_extensions:/opt/sonarqube/extensions
+    - sonarqube_bundled-plugins:/opt/sonarqube/lib/bundled-plugins
+
+  db:
+    image: hamdis/postgres
+    networks:
+    - sonarnet
+    environment:
+    - POSTGRES_USER=sonar
+    - POSTGRES_PASSWORD=sonar
+    volumes:
+    - postgresql:/var/lib/postgresql
+    - postgresql_data:/var/lib/postgresql/data
+
+networks:
+  sonarnet:
+    driver: bridge
+
+volumes:
+  sonarqube_conf:
+    name: sonarqube_conf
+    driver: local
+  sonarqube_data:
+    name: sonarqube_data
+    driver: local
+  sonarqube_extensions:
+    name: sonarqube_extensions
+    driver: local
+  sonarqube_bundled-plugins:
+    name: sonarqube_bundled
+    driver: local
+  postgresql:
+    name: postgresql
+    driver: local
+  postgresql_data:
+    name: postgresql_data
+    driver: local
