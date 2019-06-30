@@ -11,7 +11,7 @@ var config = {
         publicPath: "/app/"
     },
     devServer: {
-        port: 9000
+        port: 9009
       },
     module: {
         loaders: [
