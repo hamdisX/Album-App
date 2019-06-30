@@ -10,6 +10,20 @@ pipeline {
         git 'https://github.com/hamdimiled/Album-App'
       }
     }
+
+    stage('Sonarqube') {
+    environment {
+        scannerHome = tool 'sonarQubeScanner'
+    }
+    steps {
+        withSonarQubeEnv('sonarqube') {
+            sh "${scannerHome}/bin/sonar-scanner"
+        }
+        timeout(time: 10, unit: 'MINUTES') {
+            waitForQualityGate abortPipeline: true
+        }
+    }
+}
         
     stage('Install dependencies') {
       steps {
