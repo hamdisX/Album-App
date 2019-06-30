@@ -1,0 +1,26 @@
+pipeline {
+  agent any
+    
+  tools {nodejs "node"}
+    
+  stages {
+        
+    stage('Cloning Git') {
+      steps {
+        git 'https://github.com/hamdimiled/Album-App'
+      }
+    }
+        
+    stage('Install dependencies') {
+      steps {
+        sh 'npm install'
+      }
+    }
+     
+     stage('start') {
+      steps {
+         sh 'npm start'
+      }
+    }  
+  }
+}
