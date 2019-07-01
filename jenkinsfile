@@ -11,6 +11,12 @@ pipeline {
       }
     }
 
+  stage('Run Sonar server') {
+      steps {
+        sh 'sonar+postgres && docker-compose up'
+      }
+    }
+
     stage('Sonarqube') {
     environment {
         scannerHome = tool 'sonarQubeScanner'
