@@ -13,7 +13,7 @@ pipeline {
 
   stage('Run Sonar server') {
       steps {
-        sh 'sonar+postgres && docker-compose up'
+        sh 'cd sonar+postgres && docker-compose up'
       }
     }
 
