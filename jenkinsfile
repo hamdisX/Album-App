@@ -11,11 +11,6 @@ pipeline {
       }
     }
 
-  stage('Run Sonar server') {
-      steps {
-        sh 'cd sonar+postgres && docker-compose up -d'
-      }
-    }
 
     stage('Sonarqube') {
     environment {
