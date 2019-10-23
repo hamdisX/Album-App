@@ -9,7 +9,7 @@ pipeline {
               timeout(time: 2, unit: 'MINUTES') 
             }
       steps {
-        sh 'docker-compose -f sonar+postgres/docker-compose.yml up -d'
+        sh 'docker-compose -f sonar+postgres/docker-compose.yml up -t 1001-d'
       }
     }
 
