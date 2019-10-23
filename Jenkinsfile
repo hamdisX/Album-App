@@ -4,13 +4,6 @@ pipeline {
   tools {nodejs "node.js_12"}
     
   stages {
-        
-    stage('Cloning Git') {
-      steps {
-        git 'https://github.com/hamdimiled/Album-App'
-      }
-    }
-
 
     stage('Sonarqube') {
     environment {
