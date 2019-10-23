@@ -1,8 +1,6 @@
 pipeline {
-  //agent any    
-  //tools {nodejs "node.js_12"}
-  agent { docker { image 'node:10-slim' } }
-
+  agent any    
+  tools {nodejs "node.js_12"}
     
   stages {
 
