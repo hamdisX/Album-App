@@ -3,6 +3,13 @@ pipeline {
   tools {nodejs "node.js_12"}
     
   stages {
+    
+      stage('run server sonar and db postgress') {
+      steps {
+        sh 'cd sonar+postgres'
+        sh 'docker-compose up'
+      }
+    }
 
     stage('Sonarqube') {
     environment {
